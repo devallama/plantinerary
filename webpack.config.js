@@ -19,11 +19,19 @@ let CONFIG = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.css'],
+        alias: {
+            Dist: path.resolve(__dirname, 'public/assets'),
+            Components: path.resolve(__dirname, 'src/js/components')
+        }
     }
 };
 
