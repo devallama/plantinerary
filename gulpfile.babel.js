@@ -5,6 +5,7 @@ import webpackConfig from './webpack.config.js';
 import sass from 'gulp-sass';
 import browserSync from 'browser-sync';
 import rename from 'gulp-rename';
+import historyApiFallback from 'connect-history-api-fallback';
 
 const server = browserSync.create();
 
@@ -27,13 +28,15 @@ function compileCSS() {
 function browserSyncServe() {
     return server.init({
         server: {
-            baseDir: './public'
+            baseDir: './public',
+            middleware: [historyApiFallback()]
         }
     });
 }
 
-function reload() {
-    return server.reload();
+function reload(done) {
+    server.reload();
+    done();
 }
 
 function watchFiles() {
