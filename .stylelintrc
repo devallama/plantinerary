@@ -1,0 +1,30 @@
+{
+    "rules": {
+        "block-no-empty": null,
+        "color-no-invalid-hex": true,
+        "declaration-colon-space-after": "always",
+        "indentation": [
+            4,
+            {
+                "except": ["value"],
+                "ignore": ["inside-parens"]
+            }
+        ],
+        "block-closing-brace-empty-line-before": "never",
+        "max-empty-lines": 2,
+        "rule-empty-line-before": [
+            "always-multi-line",
+            {
+                "except": ["first-nested"],
+                "ignore": ["after-comment"]
+            }
+        ],
+        "declaration-block-no-redundant-longhand-properties": true,
+        "unit-case": "lower",
+        "unit-no-unknown": true,
+        "no-duplicate-selectors": true,
+        "no-extra-semicolons": true,
+        "color-named": "always-where-possible",
+        "declaration-block-no-duplicate-properties": true
+    }
+}
