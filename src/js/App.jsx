@@ -10,9 +10,12 @@ class App extends React.Component {
         return (
             <Router>
                 <div>
-                    <nav className="nav">
+                    <nav className="navbar navbar-light bg-light">
+                        <Link to="/" class="navbar-brand">Plantinerary</Link>
+
                         <ul>
                             <li>
+                                {/* Can make this do active stuff using NavLink component? I think - its in the docs */}
                                 <Link to="/">Home</Link>
                             </li>
                             <li>
