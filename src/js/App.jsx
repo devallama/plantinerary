@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+import Page from './pages/page';
 import PageLanding from './pages/landing';
 import PageLogin from './pages/login';
 
@@ -20,8 +21,19 @@ class App extends React.Component {
                         </ul>
                     </nav>
 
-                    <Route path="/" exact component={PageLanding} />
-                    <Route path="/login" component={PageLogin} />
+                    <Route
+                        path="/"
+                        exact
+                        render={props => (
+                            <Page {...props} component={PageLanding} title="Home" />
+                        )}
+                    />
+                    <Route
+                        path="/login"
+                        render={props => (
+                            <Page {...props} component={PageLogin} title="Login" />
+                        )}
+                    />
                 </div>
             </Router>
         )
