@@ -8,6 +8,7 @@ class Page extends React.Component {
     }
 
     render() {
+        console.log("called 2");
         const PageComponent = this.props.component;
 
         return (
