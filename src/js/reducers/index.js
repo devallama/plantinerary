@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({
+import userReducer from './user-reducer';
+import firebaseReducer from './firebase-reducer';
+import authReducer from './auth-reducer';
 
+export default combineReducers({
+    auth: authReducer,
+    firebase: firebaseReducer,
+    user: userReducer
 });
