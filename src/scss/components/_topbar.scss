@@ -1,0 +1,15 @@
+.topbar {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: $white;
+}
+
+.topbar__logo {
+    width: 20%;
+    font-size: 2rem;
+}
+
+.topbar__navigation {
+    width: 80%;
+}
