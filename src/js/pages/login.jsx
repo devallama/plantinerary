@@ -2,7 +2,7 @@ import React from 'react';
 
 import LoginForm from 'Components/LoginForm';
 
-class PageLogin extends React.Component {
+class Login extends React.Component {
     render() {
         return (
             <div>
@@ -12,4 +12,4 @@ class PageLogin extends React.Component {
     }
 }
 
-export default PageLogin;
+export default Login;
