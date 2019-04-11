@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { authLogin } from 'Actions/auth-actions';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -8,10 +11,19 @@ class LoginForm extends React.Component {
             email: '',
             password: ''
         };
+
+        console.log(this.props.userIsLoggedIn);
+
+        console.log(this.props);
     }
 
     onSubmit = event => {
         event.preventDefault();
+
+        this.props.authLogin({
+            email: this.state.email,
+            password: this.state.password
+        });
     }
 
     onChange = event => {
@@ -38,4 +50,17 @@ class LoginForm extends React.Component {
     }
 }
 
-export default LoginForm;
+LoginForm.propTypes = {
+    authLogin: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => {
+    console.log("here");
+    console.log(state);
+    return ({
+        auth: state.auth.response
+    });
+}
+
+export default connect(mapStateToProps, { authLogin })(LoginForm);
