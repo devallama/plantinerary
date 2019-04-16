@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firebaseFetchInstance } from 'Actions/firebase-actions';
-import { userIsLoggedIn } from 'Actions/user-actions';
 
 import ProtectedRoute from './routes/ProtectedRoute';
+import NouserRoute from './routes/NouserRoute';
 
 import Page from './pages/templates/page';
 import PageLanding from './pages/landing';
@@ -17,11 +17,6 @@ class App extends React.Component {
         super(props);
 
         this.props.firebaseFetchInstance();
-
-        console.log("called");
-        console.log(this.props.userIsLoggedIn());
-
-        console.log(this.props);
     }
 
     render() {
@@ -46,29 +41,27 @@ class App extends React.Component {
                         </div>
                     </div>
 
-                    <Route
-                        path="/"
-                        exact
-                        render={props => (
-                            <Page {...props} component={PageLanding} title="Home" />
-                        )}
-                    />
-                    <Route
-                        path="/login"
-                        render={props => (
-                            this.props.user.isLoggedIn
-                                ? (
-                                    <Redirect to="/dashboard" />
-                                ) : (
-                                    <Page {...props} component={PageLogin} title="Login" />
-                                )
-                        )}
-                    />
-                    <ProtectedRoute
-                        path="/dashboard"
-                        component={PageDashboard}
-                        title="Trips Dashboard"
-                    />
+                    <Switch>
+                        <Route
+                            path="/"
+                            exact
+                            render={props => (
+                                <Page {...props} component={PageLanding} title="Home" />
+                            )}
+                        />
+                        <NouserRoute
+                            path="/login"
+                            component={PageLogin}
+                            title="Login"
+                            redirect="/dashboard"
+                        />
+                        <ProtectedRoute
+                            path="/dashboard"
+                            component={PageDashboard}
+                            title="Trips Dashboard"
+                            redirect="/"
+                        />
+                    </Switch>
                 </div>
             </Router>
         )
@@ -81,8 +74,7 @@ App.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    firebase: state.firebase.instance,
-    user: state.user
+    firebase: state.firebase.instance
 });
 
-export default connect(mapStateToProps, { firebaseFetchInstance, userIsLoggedIn })(App);
+export default connect(mapStateToProps, { firebaseFetchInstance })(App);
