@@ -4,11 +4,10 @@ class Page extends React.Component {
     constructor(props) {
         super(props);
 
-        document.title = `${this.props.title} | Plantinerary`;
+        document.title = `${this.props.title} | Plan-tinerary`;
     }
 
     render() {
-        console.log("called 2");
         const PageComponent = this.props.component;
 
         return (
