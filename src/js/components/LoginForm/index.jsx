@@ -11,10 +11,6 @@ class LoginForm extends React.Component {
             email: '',
             password: ''
         };
-
-        console.log(this.props.userIsLoggedIn);
-
-        console.log(this.props);
     }
 
     onSubmit = event => {
