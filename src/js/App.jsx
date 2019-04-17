@@ -10,6 +10,7 @@ import NouserRoute from './routes/NouserRoute';
 import Page from './pages/templates/page';
 import PageLanding from './pages/landing';
 import PageLogin from './pages/login';
+import PageRegister from './pages/register';
 import PageDashboard from './pages/dashboard';
 
 class App extends React.Component {
@@ -53,6 +54,12 @@ class App extends React.Component {
                             path="/login"
                             component={PageLogin}
                             title="Login"
+                            redirect="/dashboard"
+                        />
+                        <NouserRoute
+                            path="/register"
+                            component={PageRegister}
+                            title="Register"
                             redirect="/dashboard"
                         />
                         <ProtectedRoute
