@@ -1,17 +1,14 @@
 import { AUTH_LOGIN, AUTH_REGISTER } from './types';
 
 export const authLogin = (loginDetails) => (dispatch, getState) => {
-    console.log("Logging state");
-    console.log(getState());
     let firebaseInstance = getState().firebase.instance;
 
     firebaseInstance.auth().signInWithEmailAndPassword(loginDetails.email, loginDetails.password)
-        .then(resp => {
-            console.log(resp);
+        .then(() => {
             dispatch({
                 type: AUTH_LOGIN,
                 response: {
-                    status: 1,
+                    status: 'auth/success',
                     message: 'Successfully authenticated'
                 }
             });
@@ -28,3 +25,48 @@ export const authLogin = (loginDetails) => (dispatch, getState) => {
             });
         });
 };
+
+export const authRegister = (registerDetails) => (dispatch, getState) => {
+    let firebaseInstance = getState().firebase.instance;
+
+    if (registerDetails.password === registerDetails.confirmPassword) {
+        firebaseInstance.auth().createUserWithEmailAndPassword(registerDetails.email, registerDetails.password)
+            .then(userCredential => {
+                const { user } = userCredential;
+
+                return user.updateProfile({
+                    displayName: registerDetails.name
+                });
+            })
+            .then(() => {
+                dispatch({
+                    type: AUTH_REGISTER,
+                    response: {
+                        status: 'auth/success',
+                        message: 'Successfully registered'
+                    }
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: AUTH_REGISTER,
+                    data: {
+                        response: {
+                            status: err.code,
+                            message: err.message
+                        }
+                    }
+                });
+            });
+    } else {
+        dispatch({
+            type: AUTH_REGISTER,
+            data: {
+                response: {
+                    status: 'auth/password-not-match',
+                    message: "Passwords do not match"
+                }
+            }
+        });
+    }
+}
