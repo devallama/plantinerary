@@ -12,6 +12,7 @@ import PageLanding from './pages/landing';
 import PageLogin from './pages/login';
 import PageRegister from './pages/register';
 import PageDashboard from './pages/dashboard';
+import PageLoginAnon from './pages/login-anon';
 
 class App extends React.Component {
     constructor(props) {
@@ -54,6 +55,12 @@ class App extends React.Component {
                             path="/login"
                             component={PageLogin}
                             title="Login"
+                            redirect="/dashboard"
+                        />
+                        <NouserRoute
+                            path="/login-anon"
+                            component={PageLoginAnon}
+                            title="Login Anonymously"
                             redirect="/dashboard"
                         />
                         <NouserRoute
