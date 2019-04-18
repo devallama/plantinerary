@@ -3,14 +3,27 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { authLogin } from 'Actions/auth-actions';
 
+import Form from 'Components/Form';
+import FormInput from 'Components/FormInput';
+
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            email: '',
-            password: ''
-        };
+        this.fields = {
+            email: {
+                errorMessages: {
+                    required: "Your email address is required",
+                    format: "The email address given must be valid"
+                }
+            },
+            password: {
+                errorMessages: {
+                    required: "A password is required",
+                    lengthShort: "Your password must be more than 8 characters"
+                }
+            }
+        }
     }
 
     onSubmit = event => {
@@ -30,18 +43,13 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit} className="form form--login col-md-4 offset-md-4">
+            <Form fields={this.fields} className="form form--login col-md-4 offset-md-4" noValidate
+                submitMethod={this.props.authLogin}>
                 <h2>Login</h2>
-                <div className="form-group">
-                    <label htmlFor="input_email">Email Address</label>
-                    <input id="input_email" className="form-control" name="email" type="email" value={this.state.email} onChange={this.onChange} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="input_password">Password</label>
-                    <input id="input_password" className="form-control" name="password" type="password" value={this.state.password} onChange={this.onChange} />
-                </div>
+                <FormInput label="Email Address" name="email" type="email" required />
+                <FormInput label="Password" name="password" type="password" required minLength="8" />
                 <button type="login" className="btn btn-primary">Submit</button>
-            </form>
+            </Form>
         );
     }
 }
