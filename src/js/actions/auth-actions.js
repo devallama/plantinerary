@@ -1,4 +1,4 @@
-import { AUTH_LOGIN, AUTH_REGISTER } from './types';
+import { AUTH_LOGIN, AUTH_REGISTER, AUTH_LOGIN_ANON } from './types';
 
 export const authLogin = (loginDetails) => (dispatch, getState) => {
     let firebaseInstance = getState().firebase.instance;
@@ -69,4 +69,30 @@ export const authRegister = (registerDetails) => (dispatch, getState) => {
             }
         });
     }
+}
+
+export const authLoginAnon = () => (dispatch, getState) => {
+    let firebaseInstance = getState().firebase.instance;
+
+    firebaseInstance.auth().signInAnonymously()
+        .then(() => {
+            dispatch({
+                type: AUTH_REGISTER,
+                response: {
+                    status: 'auth/success',
+                    message: 'Successfully logged in anonymously'
+                }
+            });
+        })
+        .catch(err => {
+            dispatch({
+                type: AUTH_REGISTER,
+                data: {
+                    response: {
+                        status: err.code,
+                        message: err.message
+                    }
+                }
+            });
+        });
 }
