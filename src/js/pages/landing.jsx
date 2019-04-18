@@ -19,7 +19,7 @@ class Landing extends React.Component {
                         <Link to="/login" className="mr-4"><button className="btn btn-primary">Login</button></Link>
                         <Link to="/register" className="mr-4"><button className="btn btn-secondary">Register</button></Link>
                     </div>
-                    <a href="/dashboard" className="link link--arrow">Continue without logging in</a>
+                    <Link to="/login-anon" className="link link--arrow">Continue without logging in</Link>
                 </div>
             </section>
         );
