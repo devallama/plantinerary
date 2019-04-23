@@ -1,5 +1,6 @@
 /* User Action types */
 export const USER_IS_LOGGED_IN = 'USER_IS_LOGGED_IN';
+export const USER_FETCH = 'USER_FETCH';
 
 /* Firebase Action types */
 
