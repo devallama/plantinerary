@@ -17,18 +17,14 @@ class ProtectedRoute extends Route {
         const { props } = this;
 
         if (props.user.isLoggedIn == true) {
-            console.log("this");
             return (
-                <Page {...props} component={props.component} title={props.title} />
+                <Page {...props} component={props.component} title={props.title} user={props.user} />
             );
         } else if (props.user.isLoggedIn == false) {
-            console.log("that");
             return (
                 <Redirect to={this.props.redirect || "/"} />
             );
         } else {
-            console.log("those");
-            // Could put loading thing here
             return null;
         }
     }
