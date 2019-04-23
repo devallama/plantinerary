@@ -114,7 +114,19 @@ class Form extends React.Component {
         }, this.onSubmit(event));
     }
 
+    resetForm = () => {
+        let fields = { ...this.state.fields };
+
+        Object.keys(fields).forEach(key => fields[key].value = '');
+
+        this.setState({
+            fields: fields,
+            hasSubmitted: false
+        });
+    }
+
     onSubmit = event => {
+        console.log("called");
         event.preventDefault();
 
         let fields = this.state.fields;
@@ -144,7 +156,12 @@ class Form extends React.Component {
                             formValues[key] = fields[key].value;
                         }
 
-                        this.props.submitMethod(formValues)
+                        this.props.submitMethod(formValues);
+
+                        /* If form can be submitted multiple times, reset it */
+                        if (this.props.multiSubmit) {
+                            this.resetForm();
+                        }
                     });
                 }
             } else {
@@ -154,14 +171,17 @@ class Form extends React.Component {
     }
 
     render() {
-        // TODO: Need to get recursively and only apply to FormInput components
-
         const children = React.Children.map(this.props.children, child => {
-            return React.cloneElement(child, {
-                fields: this.state.fields,
-                onBlur: this.onBlur,
-                onChange: this.onChange
-            });
+            /* Only apply props to children that are react components */
+            if (typeof child.type == 'function') {
+                return React.cloneElement(child, {
+                    fields: this.state.fields,
+                    onBlur: this.onBlur,
+                    onChange: this.onChange
+                });
+            } else {
+                return React.cloneElement(child);
+            }
         });
 
         return (
