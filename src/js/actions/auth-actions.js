@@ -1,7 +1,7 @@
 import { AUTH_LOGIN, AUTH_REGISTER, AUTH_LOGIN_ANON, AUTH_LOGOUT } from './types';
 
 export const authLogin = (loginDetails) => (dispatch, getState) => {
-    let firebaseInstance = getState().firebase.instance;
+    const firebaseInstance = getState().firebase.instance;
 
     firebaseInstance.auth().signInWithEmailAndPassword(loginDetails.email, loginDetails.password)
         .then(() => {
@@ -27,7 +27,7 @@ export const authLogin = (loginDetails) => (dispatch, getState) => {
 };
 
 export const authRegister = (registerDetails) => (dispatch, getState) => {
-    let firebaseInstance = getState().firebase.instance;
+    const firebaseInstance = getState().firebase.instance;
 
     if (registerDetails.password === registerDetails.confirmPassword) {
         firebaseInstance.auth().createUserWithEmailAndPassword(registerDetails.email, registerDetails.password)
@@ -72,7 +72,7 @@ export const authRegister = (registerDetails) => (dispatch, getState) => {
 }
 
 export const authLoginAnon = () => (dispatch, getState) => {
-    let firebaseInstance = getState().firebase.instance;
+    const firebaseInstance = getState().firebase.instance;
 
     firebaseInstance.auth().signInAnonymously()
         .then(() => {
@@ -98,7 +98,7 @@ export const authLoginAnon = () => (dispatch, getState) => {
 }
 
 export const authLogout = () => (dispatch, getState) => {
-    let firebaseInstance = getState().firebase.instance;
+    const firebaseInstance = getState().firebase.instance;
 
     firebaseInstance.auth().signOut()
         .then(() => {
