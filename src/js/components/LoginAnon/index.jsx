@@ -11,7 +11,6 @@ class LoginAnon extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <p>
                 Logging in anonymously...
@@ -23,7 +22,7 @@ class LoginAnon extends React.Component {
 LoginAnon.propTypes = {
     authLoginAnon: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
-}
+};
 
 const mapStateToProps = state => {
     return ({
