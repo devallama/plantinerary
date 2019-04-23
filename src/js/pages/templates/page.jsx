@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Header from './header';
+
 class Page extends React.Component {
     constructor(props) {
         super(props);
@@ -11,7 +13,10 @@ class Page extends React.Component {
         const PageComponent = this.props.component;
 
         return (
-            <PageComponent />
+            <div>
+                <Header user={this.props.user} />
+                <PageComponent />
+            </div>
         );
     }
 }
