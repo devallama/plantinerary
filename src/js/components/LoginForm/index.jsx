@@ -26,20 +26,20 @@ class LoginForm extends React.Component {
         }
     }
 
-    onSubmit = event => {
-        event.preventDefault();
+    // onSubmit = event => {
+    //     event.preventDefault();
 
-        this.props.authLogin({
-            email: this.state.email,
-            password: this.state.password
-        });
-    }
+    //     this.props.authLogin({
+    //         email: this.state.email,
+    //         password: this.state.password
+    //     });
+    // }
 
-    onChange = event => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
+    // onChange = event => {
+    //     this.setState({
+    //         [event.target.name]: event.target.value
+    //     });
+    // }
 
     render() {
         return (
