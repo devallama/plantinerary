@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
     render() {
-        console.log(this.props);
         if (this.props.user && this.props.user.isLoggedIn) {
             return (
                 <div className="topbar">
@@ -39,6 +38,9 @@ class Header extends React.Component {
                                 </li>
                                 <li className="site-nav__item">
                                     <Link to="/login" className="site-nav__link">Login</Link>
+                                </li>
+                                <li className="site-nav__item">
+                                    <Link to="/register" className="site-nav__link">Register</Link>
                                 </li>
                             </ul>
                         </nav>
