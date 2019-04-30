@@ -117,7 +117,7 @@ class Form extends React.Component {
     resetForm = () => {
         let fields = { ...this.state.fields };
 
-        Object.keys(fields).forEach(key => fields[key].value = '');
+        Object.keys(fields).forEach(key => { if (!fields[key].keep) { fields[key].value = '' } });
 
         this.setState({
             fields: fields,
@@ -163,8 +163,6 @@ class Form extends React.Component {
                         }
                     });
                 }
-            } else {
-                alert("form is not valid");
             }
         }
     }
