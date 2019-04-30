@@ -126,7 +126,6 @@ class Form extends React.Component {
     }
 
     onSubmit = event => {
-        console.log("called");
         event.preventDefault();
 
         let fields = this.state.fields;
