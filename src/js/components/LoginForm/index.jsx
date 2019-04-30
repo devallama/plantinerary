@@ -15,7 +15,8 @@ class LoginForm extends React.Component {
                 errorMessages: {
                     required: "Your email address is required",
                     format: "The email address given must be valid"
-                }
+                },
+                keep: true
             },
             password: {
                 errorMessages: {
@@ -26,30 +27,22 @@ class LoginForm extends React.Component {
         }
     }
 
-    // onSubmit = event => {
-    //     event.preventDefault();
-
-    //     this.props.authLogin({
-    //         email: this.state.email,
-    //         password: this.state.password
-    //     });
-    // }
-
-    // onChange = event => {
-    //     this.setState({
-    //         [event.target.name]: event.target.value
-    //     });
-    // }
-
     render() {
         return (
-            <Form fields={this.fields} className="form form--login col-md-4 offset-md-4" noValidate
-                submitMethod={this.props.authLogin}>
-                <h2>Login</h2>
-                <FormInput label="Email Address" name="email" type="email" required />
-                <FormInput label="Password" name="password" type="password" required minLength="8" />
-                <button type="login" className="btn btn-primary">Submit</button>
-            </Form>
+            <div>
+                {this.props.auth.message &&
+                    <div className="alert alert-danger">
+                        {this.props.auth.message}
+                    </div>
+                }
+                <Form fields={this.fields} className="form form--login col-md-4 offset-md-4" multiSubmit={true} noValidate
+                    submitMethod={this.props.authLogin}>
+                    <h2>Login</h2>
+                    <FormInput label="Email Address" name="email" type="email" required />
+                    <FormInput label="Password" name="password" type="password" required minLength="8" />
+                    <button type="login" className="btn btn-primary">Submit</button>
+                </Form>
+            </div>
         );
     }
 }
