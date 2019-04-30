@@ -14,6 +14,7 @@ import PageRegister from './pages/register';
 import PageLogout from './pages/logout';
 import PageDashboard from './pages/dashboard';
 import PageLoginAnon from './pages/login-anon';
+import PagePlanner from './pages/planner';
 
 class App extends React.Component {
     constructor(props) {
@@ -61,6 +62,12 @@ class App extends React.Component {
                         path="/dashboard"
                         component={PageDashboard}
                         title="Trips Dashboard"
+                        redirect="/"
+                    />
+                    <ProtectedRoute
+                        path="/planner"
+                        component={PagePlanner}
+                        title="Trip Planner"
                         redirect="/"
                     />
                 </Switch>
