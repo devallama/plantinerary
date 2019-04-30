@@ -1,0 +1,17 @@
+.itinerary-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.itinerary-list__header {
+    margin: 0;
+    font-weight: 300;
+    color: $primary;
+}
+
+.itinerary-list__item {}
+
+.itinerary-list__item--name {
+    width: 50%;
+}

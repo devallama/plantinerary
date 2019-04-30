@@ -1,13 +1,15 @@
 import React from 'react';
 
-class PageLogin extends React.Component {
+import LoginForm from 'Components/LoginForm';
+
+class Login extends React.Component {
     render() {
         return (
             <div>
-                Login page
+                <LoginForm />
             </div>
         );
     }
 }
 
-export default PageLogin;
+export default Login;
