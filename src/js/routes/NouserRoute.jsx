@@ -25,7 +25,6 @@ class NouserRoute extends Route {
                 <Redirect to={this.props.redirect || "/"} />
             );
         } else {
-            // Could put loading thing here
             return null;
         }
     }
