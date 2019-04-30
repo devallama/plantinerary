@@ -14,10 +14,10 @@ class Header extends React.Component {
                         <nav className="site-nav">
                             <ul className="site-nav__list">
                                 <li className="site-nav__item">
-                                    <Link to="/dashboard" className="site-nav__link">Dashboard</Link>
+                                    <Link to="/dashboard" className="site-nav__link text-white">Dashboard</Link>
                                 </li>
                                 <li className="site-nav__item">
-                                    <Link to="/logout" className="site-nav__link">Logout</Link>
+                                    <Link to="/logout" className="site-nav__link text-white">Logout</Link>
                                 </li>
                             </ul>
                         </nav>
@@ -34,13 +34,13 @@ class Header extends React.Component {
                         <nav className="site-nav">
                             <ul className="site-nav__list">
                                 <li className="site-nav__item">
-                                    <Link to="/" className="site-nav__link">Home</Link>
+                                    <Link to="/" className="site-nav__link text-white">Home</Link>
                                 </li>
                                 <li className="site-nav__item">
-                                    <Link to="/login" className="site-nav__link">Login</Link>
+                                    <Link to="/login" className="site-nav__link text-white">Login</Link>
                                 </li>
                                 <li className="site-nav__item">
-                                    <Link to="/register" className="site-nav__link">Register</Link>
+                                    <Link to="/register" className="site-nav__link text-white">Register</Link>
                                 </li>
                             </ul>
                         </nav>

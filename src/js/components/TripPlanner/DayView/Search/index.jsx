@@ -14,6 +14,8 @@ class Search extends React.Component {
             type: 'food',
             searchTerm: ''
         };
+
+        this.search();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -30,16 +32,23 @@ class Search extends React.Component {
         });
     }
 
-    onSearch = () => {
+    search = () => {
         let searchTerms = {
             'stop_types': this.state.type
         };
 
-        if (this.state.searchTerm != '') {
-            searchTerms['name'] = this.state.searchTerm;
-        }
-
         this.props.autouraSearchStops(searchTerms);
+    }
+
+    selectType = (e, type) => {
+        e.preventDefault();
+
+        /* Api doesn't let you change the stop type from food?? This API is terrible */
+        return;
+
+        this.setState({
+            type: type
+        }, this.search);
     }
 
     selectEvent = (itineraryEvent) => {
@@ -47,16 +56,28 @@ class Search extends React.Component {
     }
 
     render() {
+        const results = this.props.response.success ? this.props.response.response.filter(item => item.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())) : [];
         return (
-            <div>
-                Search
+            <div className="p-1">
+                <a href="javascript:" onClick={this.props.closeSearch}>Back</a>
+                <div className="input-group my-1">
+                    <div className="input-group-prepend">
+                        <button className="btn btn-outline-secondary dropdown-toggle btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Stop Type</button>
+                        <div className="dropdown-menu">
+                            <a className="dropdown-item" href="#" onClick={(e) => this.selectType(e, "food")}>Food</a>
+                            <a className="dropdown-item" href="#" onClick={(e) => this.selectType(e, "accom")}>Accomodation</a>
+                            <a className="dropdown-item" href="#" onClick={(e) => this.selectType(e, "poi")}>Place of Interest</a>
+                            <a className="dropdown-item" href="#" onClick={(e) => this.selectType(e, "attraction")}>Attraction</a>
+                            <a className="dropdown-item" href="#" onClick={(e) => this.selectType(e, "event")}>Ticket and Event</a>
+                            <a className="dropdown-item" href="#" onClick={(e) => this.selectType(e, "tour")}>Tour and Activity</a>
+                        </div>
+                    </div>
+                    <input type="text" name="searchTerm" className="form-control" value={this.state.searchTerm} onChange={this.onChange} placeholder="Search" aria-label="Search" />
+                </div>
 
-                <button onClick={this.onSearch}>Search</button>
-
-                Search results go here
-                {this.props.response.success &&
-                    <Results results={this.props.response.response} selectEvent={this.selectEvent} />
-                }
+                <div className="mt-2">
+                    <Results results={results} selectEvent={this.selectEvent} />
+                </div>
             </div>
         );
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { itineraryFetch } from 'Actions/itinerary-actions';
+import { itineraryItemDelete } from 'Actions/itinerary-actions';
 
 import Search from './Search';
 
@@ -44,7 +45,7 @@ class DayView extends React.Component {
                                 <div className="itinerary-list__item">
                                     <button className="btn btn-primary btn-sm mr-2">View details</button>
                                     <button className="btn btn-secondary btn-sm mr-2" onClick={() => this.props.focusItineraryItem(itineraryItem)}>Focus on map</button>
-                                    <button className="btn btn-danger btn-sm" onClick={() => this.props.focusItineraryItem(itineraryItem)}>Delete</button>
+                                    <button className="btn btn-danger btn-sm" onClick={() => this.props.itineraryItemDelete(this.props.tripId, itineraryItem.id)}>Delete</button>
                                 </div>
                             </div>
                         }
@@ -75,13 +76,16 @@ class DayView extends React.Component {
 
 DayView.propTypes = {
     itineraryFetch: PropTypes.func.isRequired,
-    itinerary: PropTypes.array.isRequired
+    itinerary: PropTypes.array.isRequired,
+    itineraryItemDelete: PropTypes.func.isRequired,
+    response: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
     return ({
-        itinerary: state.itinerary.itineraryData
+        itinerary: state.itinerary.itineraryData,
+        response: state.itinerary.response
     });
 };
 
-export default connect(mapStateToProps, { itineraryFetch })(DayView);
+export default connect(mapStateToProps, { itineraryFetch, itineraryItemDelete })(DayView);

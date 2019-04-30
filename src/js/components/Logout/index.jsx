@@ -11,7 +11,6 @@ class Logout extends React.Component {
     }
 
     render() {
-        // TODO: Check for response error
         return (
             <p>
                 Logging out...

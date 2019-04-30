@@ -17,10 +17,6 @@ class TripCard extends React.Component {
                             <Link to={`/planner?trip-id=${this.props.id}`} className="btn btn-primary w-50">Go to trip</Link>
                         </li>
                         <li className="list-group-item">
-                            {/* add on click */}
-                            <button type="button" className="btn btn-secondary w-50">Edit trip</button>
-                        </li>
-                        <li className="list-group-item">
                             <button type="button" className="btn btn-danger w-50" data-toggle="modal" data-target={`#deleteModal${this.props.id}`}>Delete trip</button>
                         </li>
                     </ul>
