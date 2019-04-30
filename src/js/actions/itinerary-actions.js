@@ -84,3 +84,25 @@ export const itineraryItemUpdate = (tripId, itineraryItemId, event) => (dispatch
             });
         });
 }
+
+export const itineraryItemDelete = (tripId, itineraryItemId) => (dispatch, getState) => {
+    const db = getState().firebase.instance.firestore();
+
+    db.collection("trips").doc(tripId).collection("itinerary").doc(itineraryItemId).delete()
+        .then(() => {
+            dispatch({
+                type: ITINERARY_ITEM_DELETE,
+                data: {
+                    response: 'itinerary/success'
+                }
+            });
+        })
+        .catch(err => {
+            dispatch({
+                type: ITINERARY_ITEM_DELETE,
+                data: {
+                    response: err
+                }
+            });
+        });
+}
