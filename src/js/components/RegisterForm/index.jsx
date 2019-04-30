@@ -13,13 +13,15 @@ class RegisterForm extends React.Component {
             name: {
                 errorMessages: {
                     required: "Your name is required"
-                }
+                },
+                keep: true
             },
             email: {
                 errorMessages: {
                     required: "Your email address is required",
                     format: "The email address given must be valid"
-                }
+                },
+                keep: true
             },
             password: {
                 errorMessages: {
@@ -41,15 +43,22 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
-            <Form fields={this.fields} className="form form--login col-md-4 offset-md-4" noValidate
-                submitMethod={this.props.authRegister}>
-                <h2>Register</h2>
-                <FormInput label="Name" name="name" required />
-                <FormInput label="Email Address" name="email" type="email" required />
-                <FormInput label="Password" name="password" type="password" required minLength="8" />
-                <FormInput label="Confirm Password" name="confirmPassword" type="password" required />
-                <button className="btn btn-primary">Register</button>
-            </Form>
+            <div>
+                {this.props.auth.message &&
+                    <div className="alert alert-danger">
+                        {this.props.auth.message}
+                    </div>
+                }
+                <Form fields={this.fields} className="form form--login col-md-4 offset-md-4" noValidate multiSubmit={true}
+                    submitMethod={this.props.authRegister}>
+                    <h2>Register</h2>
+                    <FormInput label="Name" name="name" required />
+                    <FormInput label="Email Address" name="email" type="email" required />
+                    <FormInput label="Password" name="password" type="password" required minLength="8" />
+                    <FormInput label="Confirm Password" name="confirmPassword" type="password" required />
+                    <button className="btn btn-primary">Register</button>
+                </Form>
+            </div>
         );
     }
 }
