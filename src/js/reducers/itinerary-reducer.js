@@ -1,4 +1,4 @@
-import { ITINERARY_FETCH, ITINERARY_ITEM_CREATE, ITINERARY_ITEM_DELETE } from 'Actions/types';
+import { ITINERARY_FETCH, ITINERARY_ITEM_CREATE, ITINERARY_ITEM_UPDATE, ITINERARY_ITEM_DELETE } from 'Actions/types';
 
 const initialState = {
     itineraryData: [],
@@ -13,6 +13,7 @@ export default (state = initialState, action) => {
                 itineraryData: action.data
             };
         case ITINERARY_ITEM_CREATE:
+        case ITINERARY_ITEM_UPDATE:
         case ITINERARY_ITEM_DELETE:
             return {
                 ...state,
