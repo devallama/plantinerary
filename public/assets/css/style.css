@@ -7021,8 +7021,45 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 /* Components */
-.btn {
+.btn:not(.btn-sm) {
   padding: 1rem 1.75rem; }
+
+.itinerary-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
+.itinerary-list__header {
+  margin: 0;
+  font-weight: 300;
+  color: #007bff; }
+
+.itinerary-list__item--name {
+  width: 50%; }
+
+.planner__container {
+  margin: 2rem 0;
+  overflow: auto; }
+
+.planner__sidebar {
+  width: 35vw;
+  float: left;
+  box-sizing: border-box; }
+
+.planner__times {
+  width: 100%; }
+
+.planner__main {
+  width: 60vw;
+  float: right;
+  box-sizing: border-box; }
+
+.planner__map {
+  width: 100%;
+  margin: 0 auto; }
+
+.planner__map-marker--active {
+  background-color: red; }
 
 .section {
   position: relative; }
