@@ -29,15 +29,10 @@ let CONFIG = {
     resolve: {
         extensions: ['.js', '.jsx', '.css'],
         alias: {
-            Dist: path.resolve(__dirname, 'public/assets'),
             Actions: path.resolve(__dirname, 'src/js/actions'),
             Components: path.resolve(__dirname, 'src/js/components')
         }
     }
 };
-
-// if(environemt == 'production') {
-//     CONFIG.mode = 'production';
-// }
 
 module.exports = CONFIG;
