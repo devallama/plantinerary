@@ -1,5 +1,4 @@
-import { AUTH_LOGIN, AUTH_REGISTER, AUTH_LOGIN_ANON } from 'Actions/types';
-import { AUTH_LOGOUT } from '../actions/types';
+import { AUTH_LOGIN, AUTH_REGISTER, AUTH_LOGIN_ANON, AUTH_LOGOUT } from 'Actions/types';
 
 const initialState = {
     response: {
