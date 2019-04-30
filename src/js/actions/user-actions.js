@@ -19,12 +19,8 @@ export const userIsLoggedIn = () => (dispatch, getState) => {
 }
 
 export const userFetch = () => (dispatch, getState) => {
-    console.log("called here");
     const firebaseInstance = getState().firebase.instance;
     const currentUser = firebaseInstance.auth().currentUser;
-
-    console.log("hereheruiweh");
-    console.log(currentUser);
 
     dispatch({
         type: USER_FETCH,
