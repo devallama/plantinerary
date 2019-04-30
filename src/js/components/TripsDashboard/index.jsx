@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { tripsFetch } from 'Actions/trips-actions';
+import { tripsFetch, tripsDelete } from 'Actions/trips-actions';
 import { userFetch } from 'Actions/user-actions';
 
-import CreateTripForm from '../CreateTripForm';
-import TripCard from './subcomponents/trip-card';
+import CreateTripForm from 'Components/CreateTripForm';
+import TripCard from './TripCard';
 
 class TripsDashboard extends React.Component {
     constructor(props) {
@@ -17,9 +16,7 @@ class TripsDashboard extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-
-        const tripCards = this.props.trips.map((trip, index) => <TripCard {...trip} key={index} />);
+        const tripCards = this.props.trips.map((trip, index) => <TripCard {...trip} key={index} deleteMethod={() => this.props.tripsDelete(trip.id)} />);
 
         return (
             <div>
@@ -44,16 +41,18 @@ class TripsDashboard extends React.Component {
 TripsDashboard.propTypes = {
     tripsFetch: PropTypes.func.isRequired,
     trips: PropTypes.array.isRequired,
+    tripsDelete: PropTypes.func.isRequired,
+    response: PropTypes.object.isRequired,
     userFetch: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
-    console.log(state);
     return ({
         trips: state.trips.tripsData,
+        response: state.trips.response,
         user: state.user.user
     })
 }
 
-export default connect(mapStateToProps, { tripsFetch, userFetch })(TripsDashboard);
+export default connect(mapStateToProps, { tripsFetch, tripsDelete, userFetch })(TripsDashboard);
