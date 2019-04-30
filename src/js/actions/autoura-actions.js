@@ -18,16 +18,12 @@ export const autouraSearchStops = (searchTerms) => (dispatch) => {
 
     axios.get(url, config)
         .then(resp => {
-            console.log(resp);
-
             dispatch({
                 type: AUTOURA_SEARCH_STOPS,
                 data: resp
             });
         })
         .catch(err => {
-            console.log(err);
-
             dispatch({
                 type: AUTOURA_SEARCH_STOPS,
                 data: resp
