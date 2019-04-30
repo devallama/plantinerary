@@ -60,16 +60,12 @@ class TripPlanner extends React.Component {
     }
 
     focusItineraryItem = itineraryItem => {
-        console.log("called");
         this.setState({
             focusedItineraryItem: itineraryItem
         });
     }
 
     render() {
-        /* If redirect is true (no trip-id query string) or trip does not exist, redirect to dashboard */
-        /* Need to set and check response before redirecting on empty trip due to loading time */
-        //if (this.state.redirect || Object.entries(this.props.trip).length === 0) {
         if (this.state.redirect) {
             return <Redirect to={"/dashboard"} />
         } else if (Object.entries(this.props.trip).length > 0) {
@@ -128,7 +124,7 @@ class TripPlanner extends React.Component {
             return (
                 <div>
                     <h3>{this.props.trip.name}</h3>
-                    <div className="list-group list-group-horizontal overflow-auto">
+                    <div className="list-group list-group-horizontal overflow-auto scrollbar pb-2">
                         {dateEls}
                     </div>
 
