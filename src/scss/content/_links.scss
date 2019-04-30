@@ -1,0 +1,19 @@
+.link {
+    color: $primary;
+}
+
+.link--arrow {
+    padding-right: 2rem;
+    position: relative;
+
+    &:after {
+        content: '';
+        @include icon('chevron', 'right');
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

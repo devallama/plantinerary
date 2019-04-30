@@ -1,0 +1,18 @@
+.site-nav {}
+
+.site-nav__list {
+    list-style: none;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+}
+
+.site-nav__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+        margin-right: 1rem;
+    }
+}
+
+.site-nav__link {}

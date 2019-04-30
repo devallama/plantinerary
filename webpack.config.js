@@ -19,16 +19,20 @@ let CONFIG = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.css'],
+        alias: {
+            Actions: path.resolve(__dirname, 'src/js/actions'),
+            Components: path.resolve(__dirname, 'src/js/components')
+        }
     }
 };
-
-// if(environemt == 'production') {
-//     CONFIG.mode = 'production';
-// }
 
 module.exports = CONFIG;
