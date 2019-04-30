@@ -60,8 +60,6 @@ LoginForm.propTypes = {
 }
 
 const mapStateToProps = state => {
-    console.log("here");
-    console.log(state);
     return ({
         auth: state.auth.response
     });
