@@ -7061,6 +7061,18 @@ a.text-dark:hover, a.text-dark:focus {
 .planner__map-marker--active {
   background-color: red; }
 
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; }
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 10px; }
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 10px; }
+
 .section {
   position: relative; }
 
@@ -7096,14 +7108,17 @@ a.text-dark:hover, a.text-dark:focus {
   display: flex;
   align-items: center;
   padding: 1rem;
-  background-color: #fff; }
+  background-color: #5C6D7E;
+  margin-bottom: 1rem; }
 
 .topbar__logo {
   width: 20%;
-  font-size: 2rem; }
+  font-size: 2rem;
+  color: #fff; }
 
 .topbar__navigation {
-  width: 80%; }
+  width: 80%;
+  margin-right: 2rem; }
 
 /* Content */
 .link {
