@@ -7,14 +7,14 @@ class Results extends React.Component {
 
     render() {
         const resultCardEls = this.props.results.map(result =>
-            <div className="card" key={result.stop_id}>
+            <div className="card mb-2" key={result.stop_id}>
                 <div className="card-body">
                     <h5 className="card-title">{result.name}</h5>
                     <p className="card-text">{result.summary}</p>
+                    <small className="text-muted">{result.location.address}</small>
                 </div>
                 <div className="card-footer">
-                    <small className="text-muted">{result.location.address}</small>
-                    <button type="button" onClick={() => this.props.selectEvent(result)}>Select</button>
+                    <button type="button" className="btn btn-primary" onClick={() => this.props.selectEvent(result)}>Add to itinerary</button>
                 </div>
             </div>
         );
