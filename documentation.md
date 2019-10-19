@@ -10,7 +10,7 @@ The aim of the project is to develop a single page web application, using a mode
 
 There are many JavaScript frameworks available to be used in web development, with three of the biggest being React.js, Vue.js and Angular. Each framework has it's own [benefits and drawbacks](https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d) which TechMagic briefly outlines. Unfamiliar with Angular, despite the [benefits Angular brings with TypeScript](https://alligator.io/typescript/typescript-benefits/) with it's static typing, I was set on using either Vue.js or React.js for this project.
 
-Vue.js is one of the most recently developed framework out of the three, which has [grown in significant popularity](https://michaelnthiessen.com/react-vs-vue-which-is-growing-faster/). It is very easy to learn with [extensive documentation](<https://vuejs.org/v2/guide/>), superior to [Reacts](https://reactjs.org/docs/hello-world.html). Vue.js uses [templates](https://vuejs.org/v2/guide/syntax.html) in developing the components, versus JSX used by React, which allows develops familiar with HTML to quickly transition into developing Vue components. Vue components have [Component-Scoped CSS](https://vue-loader.vuejs.org/guide/scoped-css.html), which allows styling to be applied only directly to components, therefore removing issues of conflicting CSS selectors and stylings. React does not provide this as core functionality, but third party libraries can be used to bring ["CSS-in-JS" functionality to React](https://reactjs.org/docs/faq-styling.html#what-is-css-in-js), allowing for similar results to Vues component-scoped CSS. An issue however with "CSS-in-JS" is it does not use CSS syntax, but instead "CSS-like" syntax in JS objects to style components, which while can have it's benefits such as conditional styling, it can be off-putting to developers as it steers away from the standard CSS syntax. Below shows the difference between styling components in React and Vue.js.
+Vue.js is one of the more recently developed frameworks out of the three, which has [grown in significant popularity](https://michaelnthiessen.com/react-vs-vue-which-is-growing-faster/). It is very easy to learn with [extensive documentation](<https://vuejs.org/v2/guide/>), superior to [Reacts](https://reactjs.org/docs/hello-world.html). Vue.js uses [templates](https://vuejs.org/v2/guide/syntax.html) in developing the components, versus JSX used by React, which allows develops familiar with HTML to quickly transition into developing Vue components. Vue components have [Component-Scoped CSS](https://vue-loader.vuejs.org/guide/scoped-css.html), which allows styling to be applied only directly to components, therefore removing issues of conflicting CSS selectors and stylings. React does not provide this as core functionality, but third party libraries can be used to bring ["CSS-in-JS" functionality to React](https://reactjs.org/docs/faq-styling.html#what-is-css-in-js), allowing for similar results to Vues component-scoped CSS. An issue however with "CSS-in-JS" is it does not use CSS syntax, but instead "CSS-like" syntax in JS objects to style components, which while can have it's benefits such as conditional styling, it can be off-putting to developers as it steers away from the standard CSS syntax. Below shows the difference between styling components in React and Vue.js.
 
 ```jsx
 import styled from 'styled-components';
@@ -45,13 +45,13 @@ The library I decided to pick out of the two was React; due to being a library I
 
 ## Styling
 
-Plantinerary uses [Bootstrap](https://getbootstrap.com/) as the foundation for the front-end, which provides a grid-system, prebuilt components, and extensive utilities for styling. Although allowing for in-depth responsive functionality, as it was not a requirement, the app has be built only for desktop devices.
+Plantinerary uses [Bootstrap](https://getbootstrap.com/) as the foundation for the front-end, which provides a grid-system, prebuilt components, and extensive utilities for styling. Although allowing for in-depth responsive functionality, as it was not a requirement, the app has been built only for desktop devices.
 
-On top of Bootstrap, the app uses [SASS/SCSS](https://sass-lang.com/) for custom styling, which implements numerous features and abilities that is missing from standard CSS. Some of these features include: partials (imports), which allow for styling to be separated into individual files and imported, variables to store either values or styling, and nested rules that reduces repetition by not needing to repeat selectors and more which is detailed in the [SASS documentation](https://sass-lang.com/documentation/).
+On top of Bootstrap, the app uses [SASS/SCSS](https://sass-lang.com/) for custom styling, which implements numerous features and abilities that is missing from standard CSS. Some of these features include: partials (imports), which allow for styling to be separated into individual files and imported, variables to store either values or styling, and nested rules that reduces repetition by not needing to repeat selectors, and more which is detailed in the [SASS documentation](https://sass-lang.com/documentation/).
 
-The custom styling uses the [BEM (Block Element Modifier) methodology](http://getbem.com/) to ensure that stylings for elements do not conflict, especially given Bootstrap is included which uses it's own methodology for CSS selectors.
+The custom styling is using the [BEM (Block Element Modifier) methodology](http://getbem.com/) to ensure that stylings for elements do not conflict, especially given Bootstrap is included which uses it's own naming convention for CSS selectors.
 
-Bootstrap is importing into the app using [Bootstrap SCSS source files](https://getbootstrap.com/docs/4.0/getting-started/theming/) provided when installed via NPM. This allows for Bootstrap default styles to be easily overwritten, and customised variables and settings to be provided.
+Bootstrap is imported into the app using [Bootstrap SCSS source files](https://getbootstrap.com/docs/4.0/getting-started/theming/) provided when installed via NPM. This allows for Bootstrap default styles to be easily overwritten, and customised variables and settings to be provided.
 
 ![Bootstrap imported into SCSS	](https://i.imgur.com/e8ONI7R.png)
 
@@ -61,7 +61,7 @@ Bootstrap is importing into the app using [Bootstrap SCSS source files](https://
 
 ### Source control & Remote repository
 
-[Git](https://git-scm.com/) is being used for the source control for this project, primarily using Visual Studio Codes native source control tool that  makes it easier for tracking uncommitted files and to submit commits, while using the command line to push and pull requests and manage branches. Using Git ensures that if any issues arise with changes to the code, it can be reverted to a previous state, or compared to a previous state to find issues. 
+[Git](https://git-scm.com/) is being used for the source control for this project, primarily using Visual Studio Codes native source control tool that  makes it easier for tracking uncommitted files and to submit commits, while using the command line to push and pull requests and manage branches. Using Git ensures that if any issues arise with changes to the code, it can be reverted to a previous state, or compared to a previous state to find changes and issues. 
 
 [GitHub](https://github.com/) is being used for the remote repository provider.
 
@@ -206,13 +206,13 @@ Redirects and links are handled by components provided by react-router that will
 
 ## Using Redux
 
-Single page applications can become difficult to manage with multiple components, sub components and so on, that it can become difficult to track and handle data, as explained in the [motivation behind Redux](https://redux.js.org/introduction/motivation). Redux helps to resolve that by providing functionality to store state globally that can be accessed anywhere from the app. [There are three core principles](https://redux.js.org/introduction/three-principles) behind Redux:
+Single page applications can become difficult to manage with multiple components, sub components and so on, meaning it can become difficult to track and handle data, as explained in the [motivation behind Redux](https://redux.js.org/introduction/motivation). Redux helps to resolve that by providing functionality to store state globally that can be accessed anywhere from the app. [There are three core principles](https://redux.js.org/introduction/three-principles) behind Redux:
 
 - There is a single source of truth - the state of the whole application is stored in a single object
 - State is read only - State cannot be changed directly, instead actions have to be emitted to change state
 - Changes are made with pure functions - Reducers simply return the next state to the component that emitted the action
 
-Redux has actions and reducers. Actions are functions that modify the global Redux state, that can be emitted from anywhere within the application. Reducers simply pass the state data in the required format, therefore as such, they can be used to handle things such as sorting and pagination. 
+Redux has actions and reducers. Actions are functions that modify the global Redux state, that can be emitted from anywhere within the application. Reducers simply pass the data in the required format to the state.
 
 All core functionality in the Plantinerary app is handled by Redux actions. Actions include auth, which handles user authentication; trips, action that handles trips fetching, creating, and deleting; and the firebase action which initialises and stores the firebase instance.
 
