@@ -73,7 +73,7 @@ The app uses Firebase Firestore for storing data. You will need to set up the da
 
 ## Live demo
 
-<https://plantinerary.com/>
+https://plantinerary.web.app/
 
 ## Documentation
 
